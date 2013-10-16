@@ -5,6 +5,8 @@ Mytwitter::Application.routes.draw do
 
   get "static_pages/about"
 
+  get "static_pages/contact"
+
   get "users/new"
 
   root to: 'static_pages#home'
