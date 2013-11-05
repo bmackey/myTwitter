@@ -6,7 +6,13 @@
         <ul class="nav pull-right">
           <li><%= link_to "Home",    home_path %></li>
           <li><%= link_to "Help",    help_path %></li>
-          <li><%= link_to "Sign in", '#' %></li>
+          <li><%= link_to "Sign in", signin_path %></li>
+          <li><%= link_to "Sign in", signin_path %></li>
+
+          <!-- <li><% if signed_in? %># Links for signed-in users
+            <% else %><%= link_to "Sign in", signin_path %>
+            <% end %>
+          </li> -->
         </ul>
       </nav>
     </div>
