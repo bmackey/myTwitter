@@ -1,14 +1,12 @@
 <h1>Listing films</h1>
 
-<table>
+<table id="filmList">
   <tr>
     <th>Name</th>
     <th>Genre</th>
     <th>Director</th>
-    <th>Threed</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Duration</th>
+    <th>Main Actor</th>
   </tr>
 
 <% @films.each do |film| %>
@@ -17,6 +15,7 @@
     <td><%= film.Genre %></td>
     <td><%= film.Director %></td>
     <td><%= film.Duration %></td>
+    <td><%= film.Actor %></td>
  
   </tr>
 <% end %>

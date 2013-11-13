@@ -11214,3 +11214,17 @@ Processing by StaticPagesController#help as HTML
   Rendered layouts/_header.html.erb (0.9ms)
   Rendered layouts/_footer.html.erb (0.4ms)
 Completed 200 OK in 11ms (Views: 11.2ms | ActiveRecord: 0.0ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (1.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20131103220728)
+Migrating to AddIndexToUsersEmail (20131103221717)
+Migrating to AddPasswordDigestToUsers (20131103222112)
+Migrating to CreateFilms (20131112211858)
+Migrating to AddMainActorToFilms (20131113101929)
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  ALTER TABLE "films" ADD "Actor" varchar(255)
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131113101929')[0m
+  [1m[35m (7.9ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m

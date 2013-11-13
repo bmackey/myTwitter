@@ -2,7 +2,12 @@
 <h1><%= @film.Title %></h1>
 <br />
 <p>
-	<b>Genre: </b><%= @film.Genre %> <br />
-	<b>Duration: </b><%= @film.Duration %> <br />
-	<b>Director: </b><%= @film.Director %>
+	<table>
+		<tr>
+			<td><b>Genre: </b><%= @film.Genre %> </td>
+			<td><b>Duration: </b><%= @film.Duration %> </td>
+			<td><b>Director: </b><%= @film.Director %> </td>
+			<td><b>Main Actor: </b><%= @film.Actor %> </td>
+		</tr>
+	</table>
 </p>

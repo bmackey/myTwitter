@@ -1,3 +1,22 @@
-// Place all the styles related to the film controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+table {
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+
+	tr {
+		width: 100px;
+		text-align: left;
+		padding: 5%;
+		}
+
+		th {
+			background: #f5f5f5;
+			border-left: solid 1px #000;
+			padding: 10px;
+			}
+
+			td {
+			width: 150px;
+			padding-left: 10px;
+			}
+}
