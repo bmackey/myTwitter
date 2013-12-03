@@ -13,13 +13,19 @@ module SessionsHelper
 
   def current_user=(user)
       @current_user = user
-    end
+  end
 
-    def current_user
-      if @current_user.nil?
-         @current_user = 
-             User.find_by_remember_token(cookies[:remember_token]) 
-      end
-      @current_user
+  def current_user
+    if @current_user.nil?
+        @current_user = 
+            User.find_by_remember_token(cookies[:remember_token]) 
     end
+    @current_user
+  end
+
+  # def signed_in_user
+  #   unless signed_in?
+  #     flash[:notice] = "Please sign in"
+  #     redirect_to signin_url
+  # end
 end

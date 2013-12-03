@@ -1,10 +1,9 @@
 Mytwitter::Application.routes.draw do
   resources :users
-<<<<<<< HEAD
   resources :sessions, only: [:new, :create, :destroy] 
-=======
-  resources :sessions, only: [:new, :create, :destroy]
->>>>>>> sign-in-out
+  resources :microposts, only: [:create, :destroy]
+
+
 
   # get "static_pages/home"
 
