@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
   has_secure_password      # A magic method!!
+  has_many :microposts, dependent: :destroy
 
   before_save do |user| 
           user.email = email.downcase 
