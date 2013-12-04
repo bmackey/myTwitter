@@ -2534,3 +2534,220 @@ ActionView::Template::Error (undefined method `current_user?' for #<#<Class:0x00
   Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
   Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
   Rendered /usr/local/rvm/gems/ruby-1.9.3-p392/gems/actionpack-3.2.12/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (6.5ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (1.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20131103220728)
+Migrating to AddIndexToUsersEmail (20131103221717)
+Migrating to AddPasswordDigestToUsers (20131103222112)
+Migrating to AddRememberTokenToUsers (20131104002802)
+Migrating to CreateMicroposts (20131203230914)
+Migrating to CreateTags (20131204003059)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131204003059')[0m
+  [1m[35m (3.8ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (1.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20131103220728)
+Migrating to AddIndexToUsersEmail (20131103221717)
+Migrating to AddPasswordDigestToUsers (20131103222112)
+Migrating to AddRememberTokenToUsers (20131104002802)
+Migrating to CreateMicroposts (20131203230914)
+Migrating to CreateTags (20131204003059)
+Migrating to CreateMicropostTagJoinTable (20131204003139)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "microposts_tags" ("micropost_id" integer, "tag_id" integer) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131204003139')[0m
+  [1m[35m (11.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (1.7ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.9ms)[0m  CREATE TABLE "microposts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" varchar(255), "string" varchar(255), "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (2.0ms)[0m  [1mCREATE INDEX "index_microposts_on_user_id_and_created_at" ON "microposts" ("user_id", "created_at")[0m
+  [1m[35m (1.5ms)[0m  CREATE TABLE "microposts_tags" ("micropost_id" integer, "tag_id" integer) 
+  [1m[36m (2.0ms)[0m  [1mCREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (2.3ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "password_digest" varchar(255), "remember_token" varchar(255)) 
+  [1m[36m (1.9ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (1.9ms)[0m  CREATE INDEX "index_users_on_remember_token" ON "users" ("remember_token")
+  [1m[36m (2.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (2.5ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131204003139')
+  [1m[36m (1.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131103220728')[0m
+  [1m[35m (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131103221717')
+  [1m[36m (1.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131103222112')[0m
+  [1m[35m (1.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131104002802')
+  [1m[36m (1.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131203230914')[0m
+  [1m[35m (1.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131204003059')
+  [1m[36m (1.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('jb@here.com') LIMIT 1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Wed, 04 Dec 2013 00:35:14 UTC +00:00], ["email", "jb@here.com"], ["name", "joe bloggs"], ["password_digest", "$2a$10$32JyGPsLWySomgdKHRJMHONyhfa3QxIPmJQsGDHgOOqbT.miZGgOK"], ["remember_token", "u08gF8sB3yhqm0Htiq4Z5A"], ["updated_at", Wed, 04 Dec 2013 00:35:14 UTC +00:00]]
+  [1m[36m (2.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('jc@here.com') LIMIT 1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Wed, 04 Dec 2013 00:35:14 UTC +00:00], ["email", "jc@here.com"], ["name", "joe Cloggs"], ["password_digest", "$2a$10$Gxe4dj2LPRieEXtNH5X9iuualDj7B8WcWpTyER.OegtofnyY6BCcC"], ["remember_token", "w8PrHo8Vqn9DVXS8cErwUA"], ["updated_at", Wed, 04 Dec 2013 00:35:14 UTC +00:00]]
+  [1m[36m (2.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('js@here.com') LIMIT 1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Wed, 04 Dec 2013 00:35:14 UTC +00:00], ["email", "js@here.com"], ["name", "jim smith"], ["password_digest", "$2a$10$ak09KKxIUV3AEHat4BEHMu1PITJ5lYetoCLcH2ZLOtavOt5smtBm6"], ["remember_token", "VqgugoT0HVNwU-SxnI3yDw"], ["updated_at", Wed, 04 Dec 2013 00:35:14 UTC +00:00]]
+  [1m[36m (1.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "microposts" ("content", "created_at", "string", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["content", "Ruby is the best"], ["created_at", Wed, 04 Dec 2013 00:35:14 UTC +00:00], ["string", nil], ["updated_at", Wed, 04 Dec 2013 00:35:14 UTC +00:00], ["user_id", 1]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "microposts" ("content", "created_at", "string", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["content", "Changed my mind, it's Java"], ["created_at", Wed, 04 Dec 2013 00:35:14 UTC +00:00], ["string", nil], ["updated_at", Wed, 04 Dec 2013 00:35:14 UTC +00:00], ["user_id", 1]]
+  [1m[35m (1.7ms)[0m  commit transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "microposts" ("content", "created_at", "string", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["content", "What Ruby lacks is ...."], ["created_at", Wed, 04 Dec 2013 00:35:14 UTC +00:00], ["string", nil], ["updated_at", Wed, 04 Dec 2013 00:35:14 UTC +00:00], ["user_id", 2]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "microposts" ("content", "created_at", "string", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["content", "I think Java and Ruby ...."], ["created_at", Wed, 04 Dec 2013 00:35:14 UTC +00:00], ["string", nil], ["updated_at", Wed, 04 Dec 2013 00:35:14 UTC +00:00], ["user_id", 3]]
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tags" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Wed, 04 Dec 2013 00:35:14 UTC +00:00], ["name", "Ruby"], ["updated_at", Wed, 04 Dec 2013 00:35:14 UTC +00:00]]
+  [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "tags" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Wed, 04 Dec 2013 00:35:14 UTC +00:00], ["name", "Java"], ["updated_at", Wed, 04 Dec 2013 00:35:14 UTC +00:00]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36mMicropost Load (0.2ms)[0m  [1mSELECT "microposts".* FROM "microposts" WHERE "microposts"."id" = ? ORDER BY microposts.created_at DESC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "microposts_tags" ("micropost_id", "tag_id") VALUES (1, 1)[0m
+  [1m[35m (1.7ms)[0m  commit transaction
+  [1m[36mMicropost Load (0.1ms)[0m  [1mSELECT "microposts".* FROM "microposts" WHERE "microposts"."id" = ? ORDER BY microposts.created_at DESC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "microposts_tags" ("micropost_id", "tag_id") VALUES (2, 2)[0m
+  [1m[35m (1.9ms)[0m  commit transaction
+  [1m[36mMicropost Load (0.1ms)[0m  [1mSELECT "microposts".* FROM "microposts" WHERE "microposts"."id" = ? ORDER BY microposts.created_at DESC LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "microposts_tags" ("micropost_id", "tag_id") VALUES (3, 1)[0m
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36mMicropost Load (0.1ms)[0m  [1mSELECT "microposts".* FROM "microposts" WHERE "microposts"."id" = ? ORDER BY microposts.created_at DESC LIMIT 1[0m  [["id", 4]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "microposts_tags" ("micropost_id", "tag_id") VALUES (4, 1)[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "microposts_tags" ("micropost_id", "tag_id") VALUES (4, 2)
+  [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (1.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateUsers (20131103220728)
+Migrating to AddIndexToUsersEmail (20131103221717)
+Migrating to AddPasswordDigestToUsers (20131103222112)
+Migrating to AddRememberTokenToUsers (20131104002802)
+Migrating to CreateMicroposts (20131203230914)
+Migrating to CreateTags (20131204003059)
+Migrating to CreateMicropostTagJoinTable (20131204003139)
+Migrating to CreateComments (20131204005459)
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" varchar(255), "user_id" integer, "micropost_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20131204005459')[0m
+  [1m[35m (6.2ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+  [1m[36m (2.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.7ms)[0m  CREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" varchar(255), "user_id" integer, "micropost_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (1.7ms)[0m  [1mCREATE TABLE "microposts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" varchar(255), "string" varchar(255), "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (1.3ms)[0m  CREATE INDEX "index_microposts_on_user_id_and_created_at" ON "microposts" ("user_id", "created_at")
+  [1m[36m (1.2ms)[0m  [1mCREATE TABLE "microposts_tags" ("micropost_id" integer, "tag_id" integer) [0m
+  [1m[35m (2.1ms)[0m  CREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (1.5ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "password_digest" varchar(255), "remember_token" varchar(255)) [0m
+  [1m[35m (1.3ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (1.4ms)[0m  [1mCREATE INDEX "index_users_on_remember_token" ON "users" ("remember_token")[0m
+  [1m[35m (1.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.3ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (1.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131204005459')[0m
+  [1m[35m (1.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131103220728')
+  [1m[36m (1.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131103221717')[0m
+  [1m[35m (1.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131103222112')
+  [1m[36m (1.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131104002802')[0m
+  [1m[35m (1.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131203230914')
+  [1m[36m (1.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20131204003059')[0m
+  [1m[35m (1.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20131204003139')
+  [1m[36m (1.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('jb@here.com') LIMIT 1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Wed, 04 Dec 2013 01:00:17 UTC +00:00], ["email", "jb@here.com"], ["name", "joe bloggs"], ["password_digest", "$2a$10$7MYPn1X6hKSNG9q4a3Yo7uMo63imTNwCR0oEaDQ1vQUwF7bkcmI36"], ["remember_token", "qwTtFbLVpmsrXBIwewX10w"], ["updated_at", Wed, 04 Dec 2013 01:00:17 UTC +00:00]]
+  [1m[36m (1.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('jc@here.com') LIMIT 1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Wed, 04 Dec 2013 01:00:17 UTC +00:00], ["email", "jc@here.com"], ["name", "joe Cloggs"], ["password_digest", "$2a$10$/55dbriYD76Q2YhMmaz3IuqH5C1.6EhmVtCpNRYFzpCy7AdE52vOa"], ["remember_token", "ZvXNKHXmqCQSEY0laYsoQw"], ["updated_at", Wed, 04 Dec 2013 01:00:17 UTC +00:00]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('js@here.com') LIMIT 1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "remember_token", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Wed, 04 Dec 2013 01:00:17 UTC +00:00], ["email", "js@here.com"], ["name", "jim smith"], ["password_digest", "$2a$10$bMkshJHMv4yXVLWSMnA79Ojjon0Pn8/c.ndPXkgVjkW67ViItNR52"], ["remember_token", "QRqUFSzAk26KDQeAUKc1ZA"], ["updated_at", Wed, 04 Dec 2013 01:00:17 UTC +00:00]]
+  [1m[36m (2.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "microposts" ("content", "created_at", "string", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["content", "Ruby is the best"], ["created_at", Wed, 04 Dec 2013 01:00:17 UTC +00:00], ["string", nil], ["updated_at", Wed, 04 Dec 2013 01:00:17 UTC +00:00], ["user_id", 1]]
+  [1m[36m (2.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "microposts" ("content", "created_at", "string", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["content", "Changed my mind, it's Java"], ["created_at", Wed, 04 Dec 2013 01:00:17 UTC +00:00], ["string", nil], ["updated_at", Wed, 04 Dec 2013 01:00:17 UTC +00:00], ["user_id", 1]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "microposts" ("content", "created_at", "string", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["content", "What Ruby lacks is ...."], ["created_at", Wed, 04 Dec 2013 01:00:17 UTC +00:00], ["string", nil], ["updated_at", Wed, 04 Dec 2013 01:00:17 UTC +00:00], ["user_id", 2]]
+  [1m[35m (1.9ms)[0m  commit transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "microposts" ("content", "created_at", "string", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["content", "I think Java and Ruby ...."], ["created_at", Wed, 04 Dec 2013 01:00:17 UTC +00:00], ["string", nil], ["updated_at", Wed, 04 Dec 2013 01:00:17 UTC +00:00], ["user_id", 3]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "tags" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Wed, 04 Dec 2013 01:00:17 UTC +00:00], ["name", "Ruby"], ["updated_at", Wed, 04 Dec 2013 01:00:17 UTC +00:00]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "tags" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Wed, 04 Dec 2013 01:00:17 UTC +00:00], ["name", "Java"], ["updated_at", Wed, 04 Dec 2013 01:00:17 UTC +00:00]]
+  [1m[35m (1.5ms)[0m  commit transaction
+  [1m[36mMicropost Load (0.2ms)[0m  [1mSELECT "microposts".* FROM "microposts" WHERE "microposts"."id" = ? ORDER BY microposts.created_at DESC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "microposts_tags" ("micropost_id", "tag_id") VALUES (1, 1)[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36mMicropost Load (0.1ms)[0m  [1mSELECT "microposts".* FROM "microposts" WHERE "microposts"."id" = ? ORDER BY microposts.created_at DESC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "microposts_tags" ("micropost_id", "tag_id") VALUES (2, 2)[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36mMicropost Load (0.1ms)[0m  [1mSELECT "microposts".* FROM "microposts" WHERE "microposts"."id" = ? ORDER BY microposts.created_at DESC LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "microposts_tags" ("micropost_id", "tag_id") VALUES (3, 1)[0m
+  [1m[35m (1.4ms)[0m  commit transaction
+  [1m[36mMicropost Load (0.1ms)[0m  [1mSELECT "microposts".* FROM "microposts" WHERE "microposts"."id" = ? ORDER BY microposts.created_at DESC LIMIT 1[0m  [["id", 4]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "microposts_tags" ("micropost_id", "tag_id") VALUES (4, 1)[0m
+  [1m[35m (1.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "microposts_tags" ("micropost_id", "tag_id") VALUES (4, 2)
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mMicropost Load (0.1ms)[0m  SELECT "microposts".* FROM "microposts" WHERE "microposts"."id" = ? ORDER BY microposts.created_at DESC LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("content", "created_at", "micropost_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["content", "Great post"], ["created_at", Wed, 04 Dec 2013 01:00:17 UTC +00:00], ["micropost_id", 1], ["updated_at", Wed, 04 Dec 2013 01:00:17 UTC +00:00], ["user_id", 3]]
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mMicropost Load (0.1ms)[0m  SELECT "microposts".* FROM "microposts" WHERE "microposts"."id" = ? ORDER BY microposts.created_at DESC LIMIT 1  [["id", 2]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "comments" ("content", "created_at", "micropost_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)  [["content", "I don't agree ..."], ["created_at", Wed, 04 Dec 2013 01:00:17 UTC +00:00], ["micropost_id", 2], ["updated_at", Wed, 04 Dec 2013 01:00:17 UTC +00:00], ["user_id", 3]]
+  [1m[36m (1.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mMicropost Load (0.1ms)[0m  [1mSELECT "microposts".* FROM "microposts" WHERE "microposts"."id" = ? ORDER BY microposts.created_at DESC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("content", "created_at", "micropost_id", "updated_at", "user_id") VALUES (?, ?, ?, ?, ?)[0m  [["content", "I don't agree either..."], ["created_at", Wed, 04 Dec 2013 01:00:17 UTC +00:00], ["micropost_id", 2], ["updated_at", Wed, 04 Dec 2013 01:00:17 UTC +00:00], ["user_id", 2]]
+  [1m[35m (1.2ms)[0m  commit transaction
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
